@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+<div class="jumbotron text-center">
+  <h1 class="display-3">Thank You!</h1>
+  <p class="lead">{{page.thank_you_text|richtext}}</p>
+  <hr>
+ 
+  <p class="lead">
+    <a class="btn btn-primary btn-sm" href="/" role="button">Continue to homepage</a>
+  </p>
+</div>
+{% endblock content %}

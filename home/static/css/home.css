@@ -1,0 +1,33 @@
+
+/* banner */
+
+.banner{
+    background-color: black;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+}
+
+.banner h1{
+    color: white;
+    font-size: 60px;
+    
+}
+
+.cardimg{
+    width: 100%;
+    height:100%;
+    padding: 0;
+}
+
+.blogs .row .row {
+    --bs-gutter-x: 0;
+    --bs-gutter-y: 0;
+}
+
+.card-img-top{
+    width: 100%;
+    height:285px;
+}
+

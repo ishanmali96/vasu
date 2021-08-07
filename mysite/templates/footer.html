@@ -1,0 +1,107 @@
+{% load static menu_tags %}
+<footer>
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-4 col-md-6">
+            <a href="#"><img src="{% static 'images/footer_logo.png' %}" alt="#" /></a>
+            <ul class="contact_information">
+               <!-- <li><span><img src="{% static 'images/location_icon.png' %}" alt="#" /></span><span
+                        class="text_cont">London 145<br>United Kingdom</span></li> -->
+               <!-- <li><span><img src="{% static 'images/phone_icon.png' %}" alt="#" /></span><span class="text_cont">987
+                        654 3210<br>987 654 3210</span></li> -->
+               <li><span><img src="{% static 'images/mail_icon.png' %}" alt="#" /></span><span
+                     class="text_cont">{{settings.home.SocialMediaSettings.mailid}}</span></li>
+            </ul>
+            <ul class="social_icon">
+               <li><a href="{{settings.home.SocialMediaSettings.facebook}}"><i class="fa fa-facebook"></i></a></li>
+               <li><a href="{{settings.home.SocialMediaSettings.twitter}}"><i class="fa fa-twitter"></i></a></li>
+               <li><a href="{{settings.home.SocialMediaSettings.linkedin}}"><i class="fa fa-linkedin"></i></a></li>
+               <li><a href="{{settings.home.SocialMediaSettings.youtube}}"><i class="fa fa-youtube"></i></a></li>
+            </ul>
+         </div>
+         <div class="col-lg-2 col-md-6">
+            <div class="footer_links">
+               <h3>Quick link</h3>
+               <ul>
+                  {% get_menu "nav" as navitem %}
+                  {% for item in navitem.menu_items.all %}
+                  {% if item.title == "Tutorial" %}
+                  <li>
+                     <a class="" data-toggle="collapse" href="#collapseExample" role="button"
+                        aria-expanded="false" aria-controls="collapseExample"><i
+                           class="fa fa-angle-right" aria-hidden="true"></i>
+                        {{item.title}}
+                     </a>
+                  </li>
+                  <div class="collapse" id="collapseExample">
+                     
+                        {% get_menu "tutorial" as tutnav %}
+                        <ul>
+                        {% for subitem in tutnav.menu_items.all %}
+                           <li><a href="{{subitem.link}}" {% if subitem.open_in_new_tab %} target="_blank" {% endif %}><i
+                           class="fa fa-angle-right" aria-hidden="true"></i>{{subitem.title}}</a></li>
+                        {% endfor %}
+                        </ul>
+                  </div>
+                  {% else %}
+                  
+                  <li><a href="{{item.link}}" {% if item.open_in_new_tab %} target="_blank" {% endif %}><i
+                           class="fa fa-angle-right" aria-hidden="true"></i>{{item.title}}</a></li>
+                  {% endif %}
+                  {% endfor %}
+                 
+               </ul>
+            </div>
+         </div>
+         <div class="col-lg-3 col-md-6">
+            {% comment %} <div class="footer_links">
+               <h3>Instagram</h3>
+               <ol>
+                  <li><img class="img-responsive" src="{% static 'images/footer_blog.png' %}" alt="#" /></li>
+                  <li><img class="img-responsive" src="{% static 'images/footer_blog.png' %}" alt="#" /></li>
+                  <li><img class="img-responsive" src="{% static 'images/footer_blog.png' %}" alt="#" /></li>
+                  <li><img class="img-responsive" src="{% static 'images/footer_blog.png' %}" alt="#" /></li>
+               </ol>
+            </div> {% endcomment %}
+         </div>
+         <div class="col-lg-3 col-md-6">
+            <div class="footer_links">
+               <h3>Contact us</h3>
+               <form action="/contuct-us/" method='POST'>
+                  {% csrf_token %}
+                  <fieldset>
+                     <div class="field">
+                        <input type="text" name="name" placeholder="Your Name" required="" />
+                     </div>
+                     <div class="field">
+                        <input type="email" name="email" placeholder="Email" required="" />
+                     </div>
+                     <div class="field">
+                        <input type="text" name="subject" placeholder="Subject" required="" />
+                     </div>
+                     <div class="field">
+                        <textarea placeholder="Message" name="massage"></textarea>
+                     </div>
+                     <div class="field">
+                        <div class="center">
+                           <button class="reply_bt">Send</button>
+                        </div>
+                     </div>
+                  </fieldset>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</footer>
+<div class="cpy">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <p>Copyright © 2021 vasoocodehub</a></p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- end footer -->

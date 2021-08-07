@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="section layout_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading">
+                    <h3>{{page.title}} <span class="orange_color">Tutorial</span></h3>
+                </div>
+            </div>
+        </div>
+        {% for blog_page in page.get_children %}
+            {% image blog_page.specific.intro_image original as img %}
+        <div class="row mt-5">
+            
+            <div class="col-md-6">
+                <img src="{{img.url}}" alt="{{img.alt}}" />
+            </div>
+            <div class="col-md-6">
+                <div class="full blog_cont">
+                    <h4>{{blog_page.specific.topic}}</h4>
+                    <h5>{{blog_page.specific.date}}</h5>
+                    <p>{{blog_page.specific.intro|slice:":200"}}......</p>
+                    <a href="{{blog_page.url}}" class="btn btn-primary">Read full Article</a>
+                </div>
+            </div>
+        </div>
+            {% endfor %}
+
+        
+    </div>
+   
+</div>
+<!-- end section -->
+
+{% endblock %}

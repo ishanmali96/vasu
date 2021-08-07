@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+
+{% block content %}
+
+<div class="Blog-bg">
+        <div class="container">
+                <div class="row">
+                        <div class="col-md-12">
+                                <div class="Blogheading">
+                                        <h3>Blog </h3>
+                                </div>
+                        </div>
+                </div>
+        </div>
+</div>
+<!-- section -->
+<div class="section layout_padding  light_silver">
+        <div class="container">
+
+                <div class="row">
+                        <div class="col-md-10 offset-md-1">
+                                <div class="full">
+                                        <div class="blog_cont_2">
+                                                <h3>{{page.topic}}</h3>
+                                                <p class="sublittle">{{page.date}}</p>
+                                                <div class="big_blog">
+                                                        {% image page.intro_image original as img %}
+                                                        <img class="img-responsive" src="{{img.url}}" alt="#" />
+                                                </div>
+
+                                                {% for block in page.content %}
+                                                <div class="block-{{block.block_type}}">
+                                                        {% include_block block %}
+                                                </div>
+                                                {% endfor %}
+
+
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div> <!-- end section -->
+</div>
+
+{% endblock %}
